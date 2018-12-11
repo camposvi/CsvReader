@@ -1,4 +1,4 @@
-package csvReader;
+package com.ibm.csvReader.dao;
 
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,7 +14,7 @@ public class Connect {
 	private String url;
 	private String user;
 	private String password;
-
+	
 	public Connection connectDB() throws SQLException {
 		url = "jdbc:postgresql://localhost:5432/asap";
 		user = "postgres";
@@ -24,11 +24,12 @@ public class Connect {
 
 	}
 
-	Connect() {
-
+	public Connect() {
+		
 		try {
 			Class.forName("org.postgresql.Driver");
 			dropTable();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -36,6 +37,7 @@ public class Connect {
 
 	public long updateTable(String directory) {
 		long insertedRows = 0;
+		
 		try {
 			Connection con = connectDB();
 
@@ -54,6 +56,7 @@ public class Connect {
 	public long dropTable() {
 		String SQL = "DELETE FROM testing";
 		long affectedRows = 0;
+		
 		try (Connection con = connectDB(); PreparedStatement pstmt = con.prepareStatement(SQL)) {
 			affectedRows = pstmt.executeUpdate();
 			System.out.printf("%d row(s) affected%n", affectedRows);

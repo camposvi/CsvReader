@@ -1,30 +1,19 @@
-package csvReader;
+package com.ibm.csvReader.view;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
-
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.layout.FormSpecs;
-import net.miginfocom.swing.MigLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import com.ibm.csvReader.dao.Connect;
 import javax.swing.JTextField;
-import java.awt.Window.Type;
+
 
 public class CsvReader {
 
@@ -72,6 +61,7 @@ public class CsvReader {
 				} else {
 					Connect con = new Connect();
 					con.updateTable(location);
+					
 				}
 			}
 		});
